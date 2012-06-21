@@ -1,0 +1,16 @@
+# .vimbashrc
+
+# User specific aliases and functions
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+#include common bash setup
+if [ -f $HOME/.bash/common ]; then
+	. $HOME/.bash/common
+fi
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007'$CURSOR_COMMAND'" && PS1="\[\e[0;${PROMPT_COLOR}m\][\h$CUR_SITE]\[\e[0;36m\] \W\[\e[0;0m\]<VIM SESSION>.: \[\e[m\]"'
+export PROMPT_COMMAND
+
