@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# do we want color prompt?
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+    xterm-256color) color_prompt=yes;;
+    screen-bce) color_prompt=yes;;
+esac
+#setup bash prompt
+if [ "$color_prompt" == "yes" ]; then
+	if [ -e $HOME/.bash_prompt_colors ]; then
+	    . $HOME/.bash_prompt_colors
+	else
+	    PROMPT_COLOR="32"
+	    CURSOR_COLOR="Green"
+        BRANCH_COLOR="38;5;138"
+	fi
+	PS1="\[\e[${PROMPT_COLOR}m\][\h]\]\[\e[36m\] \W\[\e[0m\].: \[\e[m\]"
+	CURSOR_COMMAND='\033]12;${CURSOR_COLOR}\007'
+    # if we have __git_ps1 then we should put it in the prompt command
+    if [ $(type -t __git_ps1) == "function" ]; then
+        git_branch_find="\"\$(__git_ps1 ' %s')\""
+    fi
+    PROMPT_COMMAND='curb='$git_branch_find' && echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007'$CURSOR_COMMAND'" && PS1="\[\e[${PROMPT_COLOR}m\][\h\[\e[${BRANCH_COLOR}m\]$curb\[\e[${PROMPT_COLOR}m\]]\[\e[36m\] \W\[\e[0m\].: \[\e[m\]"; export curb=${curb/ /}'
+	export PROMPT_COMMAND PROMPT_COLOR CURSOR_COLOR
+fi
+
+#TODO make alias for setpromptcolor that will automatically source this file when its done..
