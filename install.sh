@@ -48,3 +48,4 @@ function add_bundle(){
 }
 
 add_bundle "nerdtree"
+add_bundle "camelcasemotion"

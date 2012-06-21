@@ -4,3 +4,6 @@
 [submodule "vim-bundles/nerdtree"]
 	path = vim-bundles/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim-bundles/camelcasemotion"]
+	path = vim-bundles/camelcasemotion
+	url = git://github.com/vim-scripts/camelcasemotion.git
