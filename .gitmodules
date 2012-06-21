@@ -7,3 +7,6 @@
 [submodule "vim-bundles/camelcasemotion"]
 	path = vim-bundles/camelcasemotion
 	url = git://github.com/vim-scripts/camelcasemotion.git
+[submodule "vim-bundles/surround"]
+	path = vim-bundles/surround
+	url = git://github.com/tpope/vim-surround.git
