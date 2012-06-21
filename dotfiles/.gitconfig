@@ -1,0 +1,54 @@
+# ~/.gitconfig
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+
+[alias]
+    pulll      = pull
+    lg         = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    up         = pull origin
+    s          = status
+    st         = status
+    stat       = status
+    ci         = commit
+    co         = checkout
+    di         = diff
+    dc         = diff --cached
+    br         = branch -v
+    b          = branch
+    bra        = branch -a
+    sta        = stash
+    f          = fetch origin
+    checkfiles = diff --name-only
+    tracking = "!f() { echo $(git config --get branch.$1.remote):$(git config --get branch.$1.merge);  }; source ~/.bash/git-completion.bash; f $(__git_ps1 '%s')"
+    # git set-tracking remote[ default origin ] branch [ default current branch name ]
+    set-tracking = "!f(){ remote=$2; if [ $# -lt 2 ]; then track=$1; remote='origin'; elif [ $# -lt 3 ]; then track=$1; else track=$3; fi; git config branch.$1.remote $remote; git config branch.$1.merge refs/heads/$track; }; source ~/.bash/git-completion.bash; f $(__git_ps1 '%s') $1 $2"
+
+    # git new-bug bugNo basebranch [ default master ]
+    new-bug = "!~/.bash/new-bug-branch.sh $1 $2"
+
+    prune-tags = "!~/.bash/git-prune-tags.rb $1"
+    prune-bugs = "!~/.bash/prune-bugs.sh $1"
+
+[branch]
+    autosetupmerge = false
+[merge]
+    tool = viminline
+[mergetool "viminline"]
+    cmd = "vim $MERGED; find . -name '*.orig' | xargs rm"
+[core]
+    editor = vim
+[user]
+    name = James Pepin
+    email = jpepin@llnw.com
+[push]
+    default = current
+[pull]
+    default = current
+[diff]
+    renamelimit = 1000
+
+[diff "nodiff"]
+    command = /bin/true
