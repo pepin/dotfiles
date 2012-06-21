@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Remove color files 
+
+# Softlinks
+rm -rf softlink
+rm -rf softlink_broken
+
+# Directories
+rm -rf directory_private
+rm -rf directory_readable
+rm -rf directory_writable
+
+if [ -d directory_locked ]; then
+    chmod 755 directory_locked
+fi
+rm -rf directory_locked
+
+# Soft-links
+# Hard-links
+
+# Executable files
+rm -rf executable
+
+# Unreadable files
+rm -rf media.*
+rm -rf dos.*
+rm -rf source.*
+rm -rf config.*
+rm -rf web.*
+rm -rf archive.*
+rm -rf odd.*
+rm -rf object.*
+
+# $Id: Clean 3 2004-04-15 13:24:41Z scott $

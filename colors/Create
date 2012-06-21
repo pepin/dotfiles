@@ -1,0 +1,112 @@
+#!/bin/sh
+
+# XXX TODO: have this generate the dircolors config and the test files
+
+# Create files of each file extension and executable permission for testing
+# dircolors with.
+
+# Directories
+mkdir directory_private
+chmod 700 directory_private
+
+mkdir directory_readable
+chmod 755 directory_readable
+
+mkdir directory_writable
+chmod 777 directory_writable
+
+mkdir directory_locked
+chmod 000 directory_locked
+
+# Softlink
+ln -s directory_readable softlink
+
+# Broken softlink
+touch tmpfile
+ln -s tmpfile softlink_broken
+rm -rf tmpfile
+
+# Hard-links
+# Devices
+
+# Executable files
+touch executable
+chmod 755 executable
+
+# Unreadable files
+
+# Media files
+type=media
+color="01;35"
+files="gif jpg jpeg bmp pbm pgm ppm tga xbm tif tiff png mpg mpeg avi fli gl dl xcf xwd mov mp3 mp4 ogg wav"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# DOS and Windows files
+type=dos
+files="cmd bat btm com exe doc DOC ppt PPT pps PPS xls XLS"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# Source files
+type=source
+files="c h cpp pl pm rb tcl el java"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# Object files
+type=object
+files="o class"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# Config files
+type=config
+files="conf config"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# Web and Markup files
+type=web
+files="adp css js htm html sgm sgml xml xsl xslt"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# Archive files
+type=archive
+files="tar tgz taz arj lzh zip z Z gz bz2 jar deb rpm"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# Odds and Ends
+type=odd
+# XXX add ical etc.
+files="vcd"
+for file in $files
+do
+    touch $type.$file
+    chmod 644 $type.$file
+done
+
+# $Id: Create 3 2004-04-15 13:24:41Z scott $

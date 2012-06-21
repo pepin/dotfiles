@@ -1,0 +1,11 @@
+README - colors
+
+Use this directory to see what dircolors is showing:
+
+  Run 'Create' to create files and directories that should trigger colors. 
+
+  Run 'Clean' to remove all of the temporary stuff.
+
+  Run 'source DIRCOLORS.sh' to set up color ls in current shell.
+
+$Id: README 3 2004-04-15 13:24:41Z scott $
