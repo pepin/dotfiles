@@ -32,8 +32,6 @@ for file in $(find "$current_dir/dotfiles/" -maxdepth 1); do
 done
 
 function add_bundle(){
-    abspath="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
-    current_dir=`dirname "$abspath"`
     dest_path="$HOME/.vim/bundle/$1"
     source_path="$current_dir/vim-bundles/$1"
     mkdir -p ~/.vim/bundle
