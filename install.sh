@@ -48,3 +48,5 @@ function add_bundle(){
 add_bundle "nerdtree"
 add_bundle "camelcasemotion"
 add_bundle "surround"
+ln -s "$current_dir/oh-my-zsh" "$HOME/.oh-my-zsh"
+ln -s "$current_dir/oh-my-zsh-custom" "$HOME/.oh-my-zsh-custom"
