@@ -39,13 +39,6 @@ source $ZSH/oh-my-zsh.sh
 #export HTTP_PROXY="http://virt-mgr.vm.phx2.llnw.net:80"
 export EDITOR=vim
 
-alias virc='vim ~/.zshrc; source ~/.zshrc'
-alias nosetests='nosetests --with-progressive'
-alias nt=nosetests
-alias vivi='vim ~/.vimrc'
-alias rabbit='sudo -u rabbitmq -H rabbitmqctl'
-bindkey -v
-bindkey '\e[3~' delete-char
-bindkey '^R' history-incremental-search-backward
-zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-alias apt='aptitude'
+if [ -f "$HOME/.zsh/common" ]; then
+    source "$HOME/.zsh/common"
+fi

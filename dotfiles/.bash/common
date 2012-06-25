@@ -4,38 +4,15 @@
 if [ -f $HOME/.bash/git-completion.bash ]; then
     . $HOME/.bash/git-completion.bash
 fi
+
 if [ -e "$HOME/.bash/prompt" ]; then
     source "$HOME/.bash/prompt"
 fi
 
-os_type=$(uname)
-
-export PAGER="less -S"
-export MANPAGER=$PAGER
-export EDITOR=vim
-
-unset USERNAME
-
-# ls aliases
-if [ "$os_type" == "Darwin" ]; then
-    color_opt="-G"
-else
-    color_opt="--color=tty"
+RC_FILE="~/.zshrc"
+if [ -f "$HOME/.shell/common" ]; then
+    source "$HOME/.shell/common"
 fi
-alias lh="ls -alh $color_opt"
-alias l.="ls -dF $color_opt .*"
-alias l.l="ls -dlF $color_opt .*"
-alias ls="ls -F $color_opt"
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
-#lots of manpages use invalid utf-8 chars
-#alias man="LANG=en_US.latin1 man"
-alias rgrep="grep -R -n --color=auto"
-alias white="perl -i -pe 's/\s+$/\n/;s/^\t/    /g'"
-
-alias sls="screen -ls"
 
 # shopt -s progcomp
 #include custom bash setup

@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+RC_FILE="~/.zshrc"
+if [ -f "$HOME/.shell/common" ]; then
+    source "$HOME/.shell/common"
+fi
+
+bindkey -v
+bindkey '\e[3~' delete-char
+bindkey '^R' history-incremental-search-backward
+zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+#include custom zsh setup
+if [ -f $HOME/.zsh/custom ]; then
+    source $HOME/.zsh/custom
+fi
