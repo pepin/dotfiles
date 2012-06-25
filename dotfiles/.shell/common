@@ -9,11 +9,7 @@ export EDITOR=vim
 unset USERNAME
 
 # ls aliases
-if [ "$os_type" == "Darwin" ]; then
-    color_opt="-G"
-else
-    color_opt="--color=tty"
-fi
+color_opt="--color=tty"
 alias lh="ls -alh $color_opt"
 alias l.="ls -dF $color_opt .*"
 alias l.l="ls -dlF $color_opt .*"
