@@ -15,13 +15,13 @@ GIT_PROMPT_INFO=$FG[012]
 INS_MODE_COLOR=$FG[260]
 CMD_MODE_COLOR=$FG[160] # red for command mode
 
-PROMPT='%{$PROMPT_SUCCESS_COLOR%}%~%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}$(vi_mode_prompt_or ᐅ)%{$reset_color%} '
+PROMPT='%{$PROMPT_SUCCESS_COLOR%}%~%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status)%{$reset_color%}$(vi_mode_prompt_or ᐅ) '
 
 function vi_mode_prompt_or(){
   if [ "$KEYMAP" = "vicmd" ]; then
-      echo "$CMD_MODE_COLOR   $1$reset_color"
+      echo "%{$CMD_MODE_COLOR%}   $1%{$reset_color%}"
   else
-      echo "$INS_MODE_COLOR --$1$reset_color"
+      echo "%{$INS_MODE_COLOR%} --$1%{$reset_color%}"
   fi
 }
 
