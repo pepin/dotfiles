@@ -9,7 +9,7 @@ export EDITOR=vim
 unset USERNAME
 
 # ls aliases
-color_opt="--color=tty"
+#color_opt="--color=tty"
 alias lh="ls -alh $color_opt"
 alias l.="ls -dF $color_opt .*"
 alias l.l="ls -dlF $color_opt .*"
