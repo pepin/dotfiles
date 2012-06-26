@@ -16,6 +16,9 @@ function copy_remote(){
 function copy_local(){
     if [ $(uname) == "Darwin" ]; then
         cp -fRv "$1" "$2"
+    elif [ $(uname) == "FreeBSD" ]; then
+        cd "$2"
+        cp -lfRv "$1" "$2/"
     else
         cd "$2"
         cp -sfRv "$1" "$2/"
