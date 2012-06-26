@@ -9,7 +9,7 @@ if [ -e "$HOME/.bash/prompt" ]; then
     source "$HOME/.bash/prompt"
 fi
 
-RC_FILE="~/.zshrc"
+RC_FILE="~/.bashrc"
 if [ -f "$HOME/.shell/common" ]; then
     source "$HOME/.shell/common"
 fi
@@ -19,4 +19,3 @@ fi
 if [ -f $HOME/.bash_custom ]; then
     source $HOME/.bash_custom
 fi
-
