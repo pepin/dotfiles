@@ -20,7 +20,7 @@ if [ -e $HOME/.bash_prompt_colors ]; then
 else
     PROMPT_COLOR_NUM="32"
 fi
-PROMPT='%{$FG[$PROMPT_COLOR_NUM]%}[%n@%m]%{$reset_color%}%{$PROMPT_SUCCESS_COLOR%}%~%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status)%{$reset_color%}$(vi_mode_prompt_or ᐅ) '
+PROMPT='%{$FG[$PROMPT_COLOR_NUM]%}[%n@%m]%{$reset_color%}%{$PROMPT_SUCCESS_COLOR%}%~%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status)%{$reset_color%}$JP_SESSION_PROMPT_MARKER$(vi_mode_prompt_or ᐅ) '
 
 function vi_mode_prompt_or(){
   if [ "$KEYMAP" = "vicmd" ]; then
