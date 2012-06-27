@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
 RC_FILE="~/.zshrc"
+if [ $(uname) = "Linux" ]; then
+    color_opt="--color=tty"
+fi
 if [ -f "$HOME/.shell/common" ]; then
     source "$HOME/.shell/common"
 fi
