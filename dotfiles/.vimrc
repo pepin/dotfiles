@@ -79,3 +79,6 @@ endif
 ":set shell=/bin/bash\ --rcfile\ $HOME/.vimbashrc
 
 set fileencodings=utf-8,latin1
+
+" set this for showing vim session info in shell prompt
+let $JP_SESSION_PROMPT_MARKER="<VIM SESSION> "

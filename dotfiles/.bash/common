@@ -10,6 +10,9 @@ if [ -e "$HOME/.bash/prompt" ]; then
 fi
 
 RC_FILE="~/.bashrc"
+if [ $(uname) == "Linux" ]; then
+    color_opt="--color=tty"
+fi
 if [ -f "$HOME/.shell/common" ]; then
     source "$HOME/.shell/common"
 fi
