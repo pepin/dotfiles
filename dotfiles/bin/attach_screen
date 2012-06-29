@@ -1,15 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 function _ssh_auth_save()
 {
-    export HOSTNAME=$(hostname)
+    export HOSTNAME=`hostname`
     mkdir -p "$HOME/.screen/"
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
 }
 
+zsh_path=`which zsh`
 case "$1" in
     "zsh")
-        export SHELL="/usr/bin/zsh"
+        export SHELL="$zsh_path"
         ;;
     "bash")
         export SHELL="/bin/bash"
@@ -17,4 +18,9 @@ case "$1" in
 esac
 
 _ssh_auth_save
-screen -d -R
+
+if [ -e "$HOME/bin/screen" ]; then
+    $HOME/bin/screen -d -R -U
+else
+    screen -d -R -U
+fi
