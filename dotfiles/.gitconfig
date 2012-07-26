@@ -9,6 +9,7 @@
     pulll      = pull
     lg         = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     up         = pull origin
+    lp         = log --pretty=oneline -n20
     s          = status
     st         = status
     stat       = status
