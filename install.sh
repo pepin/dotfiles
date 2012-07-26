@@ -51,6 +51,7 @@ function add_bundle(){
 add_bundle "nerdtree"
 add_bundle "camelcasemotion"
 add_bundle "surround"
+add_bundle "python-mode"
 if [ ! -e  "$HOME/.oh-my-zsh" ]; then
     ln -s "$current_dir/oh-my-zsh" "$HOME/.oh-my-zsh"
 fi
