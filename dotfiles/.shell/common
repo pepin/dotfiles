@@ -23,6 +23,7 @@ alias nosetests='nosetests --with-progressive'
 alias nt=nosetests
 alias virc="vim $RC_FILE; source $RC_FILE"
 alias vivi='vim ~/.vimrc'
+alias vigit='vim ~/.gitconfig'
 alias apt='aptitude'
 
 
