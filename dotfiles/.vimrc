@@ -31,18 +31,28 @@ set hidden
 " automatically save buffers on exit
 " set autowrite
 
-call pathogen#infect()
 syntax on
 syntax enable
 filetype on
 filetype indent on
 filetype plugin on
 
+" completion settings
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" remap-ctrl space just like visual studio for omnicompletion
+inoremap <C-space> <C-x><C-o>
+
 " mapping for switching windows with ctrl + hjkl
-map <C-H> <C-W>h<C-W>_
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+
+" fullscreen current window
+map <C-_> <C-W>_
 
 map <F7> :nohls<CR>
 map <F6> :set incsearch<CR>
@@ -82,3 +92,10 @@ set fileencodings=utf-8,latin1
 
 " set this for showing vim session info in shell prompt
 let $JP_SESSION_PROMPT_MARKER="<VIM SESSION> "
+
+call pathogen#infect()
+
+" pythonmode settings
+let g:pymode_lint_ignore = "E501,E251,E231,E203,E201,E202,W601,E302,E303"
+
+set foldlevel=1
