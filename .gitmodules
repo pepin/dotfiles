@@ -10,3 +10,6 @@
 [submodule "vim-bundles/surround"]
 	path = vim-bundles/surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "vim-bundles/python-mode"]
+	path = vim-bundles/python-mode
+	url = git://github.com/klen/python-mode.git
