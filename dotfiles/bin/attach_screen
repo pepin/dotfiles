@@ -17,6 +17,9 @@ case "$1" in
         ;;
 esac
 
+eval `ssh-agent`
+ssh-add $HOME/.ssh/keys/*
+
 _ssh_auth_save
 
 if [ -e "$HOME/bin/screen" ]; then
