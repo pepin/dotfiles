@@ -1,4 +1,6 @@
 #!/bin/bash
+# requires that you have symlinks to your private keys in a directory under .ssh called keys
+# it seemed like a cleaner way to do this than just trying to add everything under .ssh
 
 function _ssh_auth_save()
 {
