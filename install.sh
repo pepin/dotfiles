@@ -9,6 +9,7 @@ if [ $# -eq 1 ]; then
 else
    copy_cmd="copy_local"
 fi
+git submodule update --init
 server=$1
 function copy_remote(){
     rsync -a --exclude=".git" "$1" "$server:~/"
