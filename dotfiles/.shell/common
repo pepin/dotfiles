@@ -55,3 +55,4 @@ alias venv="if [ -d ./venv ]; then; source ./venv/bin/activate; else cd \${VIRTU
 alias vclean="~/bin/make-venv.sh -f; venv"
 alias mkv="vclean; venv"
 alias mkdev="vclean; venv; python setup.py develop"
+alias dev="python setup.py develop"
