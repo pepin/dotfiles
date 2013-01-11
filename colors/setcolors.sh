@@ -12,7 +12,7 @@ read color
 
 echo "You chose $color"
 
-./colortest | grep "[^0-9]$color[^0-9]" | perl -ne '$_ =~ m/([\d]+)\s*:\s*(.)(.)\/(.)(.)\/(.)(.)/; print "#!/bin/sh\n\nexport PROMPT_COLOR_NUM=\"$1\"\nexport PROMPT_COLOR=\"38;5;$1\"\nexport CURSOR_COLOR=\"rgb:$2$2$3$3/$4$4$5$5/$6$6$7$7\"\n"' > ~/.bash_prompt_colors
+./colortest | grep "[^0-9]$color[^0-9]" | perl -ne '$_ =~ m/([\d]+)\s*:\s*(.)(.)\/(.)(.)\/(.)(.)/; if ($1 < 100) {$cnum="0$1";}else{$cnum=$1} print "#!/bin/sh\n\nexport PROMPT_COLOR_NUM=\"$cnum\"\nexport PROMPT_COLOR=\"38;5;$1\"\nexport CURSOR_COLOR=\"rgb:$2$2$3$3/$4$4$5$5/$6$6$7$7\"\n"' > ~/.bash_prompt_colors
 
 . ~/.bash/prompt
 
