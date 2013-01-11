@@ -3,13 +3,19 @@
 # for examples
 
 function pathmunge () {
-	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
-	   if [ "$2" = "after" ] ; then
-	      PATH=$PATH:$1
-	   else
-	      PATH=$1:$PATH
-	   fi
-	fi
+    egr="/bin/egrep"
+    if [ -x "/bin/egrep" ]; then
+        egr="/bin/egrep"
+    elif [ -x "/usr/bin/egrep" ]; then
+        egr="/usr/bin/egrep"
+    fi
+    if ! echo $PATH | $egr -q "(^|:)$1($|:)" ; then
+       if [ "$2" = "after" ] ; then
+          PATH=$PATH:$1
+       else
+          PATH=$1:$PATH
+       fi
+    fi
 }
 
 # If not running interactively, don't do anything
@@ -73,7 +79,7 @@ alias vigit='vi ~/.gitconfig'
 
 #include common bash setup
 if [ -f $HOME/.bash/common ]; then
-	source $HOME/.bash/common
+    source $HOME/.bash/common
 fi
 
 alias apt='aptitude'
