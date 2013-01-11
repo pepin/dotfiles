@@ -96,6 +96,6 @@ let $JP_SESSION_PROMPT_MARKER="<VIM SESSION> "
 call pathogen#infect()
 
 " pythonmode settings
-let g:pymode_lint_ignore = "E501,E251,E231,E203,E201,E202,W601,E302,E303"
+let g:pymode_lint_ignore = "E501,E251,E231,E203,E201,E202,W601,E302,E303,W404,W901,E261,E702,E225,E401,E701,E221"
 
-set foldlevel=1
+set foldlevel=0

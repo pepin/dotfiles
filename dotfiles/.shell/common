@@ -2,12 +2,26 @@
 
 os_type=$(uname)
 
+function pathmunge () {
+	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+	   if [ "$2" = "after" ] ; then
+	      PATH=$PATH:$1
+	   else
+	      PATH=$1:$PATH
+	   fi
+	fi
+}
+
+pathmunge /var/lib/gems/1.8/bin
+
+
 export PAGER="less -S"
 export MANPAGER=$PAGER
 export EDITOR=vim
 
 unset USERNAME
 export PATH="$HOME/bin:$PATH"
+TZ='America/New_York'; export TZ
 
 # ls aliases
 export CLICOLOR=1
@@ -35,3 +49,9 @@ alias rgrep="grep -R -n --color=auto"
 alias white="perl -i -pe 's/\s+$/\n/;s/^\t/    /g'"
 
 alias sls="screen -ls"
+alias upload="python setup.py sdist bdist_egg upload -r local"
+
+alias venv="if [ -d ./venv ]; then; source ./venv/bin/activate; else cd \${VIRTUAL_ENV}; cd ..; fi"
+alias vclean="~/bin/make-venv.sh -f; venv"
+alias mkv="vclean; venv"
+alias mkdev="vclean; venv; python setup.py develop"

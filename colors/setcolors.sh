@@ -14,6 +14,8 @@ else
 
     ./colortest | grep '[^0-9]'$color'[^0-9]' | perl -ne '$_ =~ m/([\d]+)\s*:\s*(.)(.)\/(.)(.)\/(.)(.)/; printf("#!/bin/sh\n\nexport PROMPT_COLOR_NUM=\"%0*d\"\nexport PROMPT_COLOR=\"38;5;$1\"\nexport CURSOR_COLOR=\"rgb:$2$2$3$3/$4$4$5$5/$6$6$7$7\"\n", 3, $1);' > ~/.bash_prompt_colors
 
-    . ~/.bash/prompt
+    if [ -f "$RC_FILE" ]; then
+        source $RC_FILE
+    fi
 
 fi
