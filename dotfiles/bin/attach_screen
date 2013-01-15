@@ -19,13 +19,23 @@ case "$1" in
         ;;
 esac
 
-eval `ssh-agent -s`
-ssh-add $HOME/.ssh/keys/*
+pks=`find ~/.ssh/keys -type f ! -name '*.pub' -print`
+for pk in $pks
+do
+    if [ ! -e "$pk.pub" ]; then
+        ssh-keygen -y -f "$pk" > "$pk.pub"
+    fi
+    sig=`ssh-keygen -lf $pk.pub | cut -d ' ' -f 2`
+    ssh-add -l | grep "$sig"
+    if [ $? -eq 1 ]; then
+        ssh-add "$pk"
+    fi
+done
 
 _ssh_auth_save
 
 if [ -e "$HOME/bin/screen" ]; then
-    $HOME/bin/screen -d -R -U
+    exec $HOME/bin/screen -d -R -U
 else
-    screen -d -R -U
+    exec screen -d -R -U
 fi
