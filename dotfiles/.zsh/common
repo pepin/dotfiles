@@ -20,3 +20,6 @@ bindkey '^[[8~' end-of-line
 if [ -f $HOME/.zsh/custom ]; then
     source $HOME/.zsh/custom
 fi
+
+# 10ms for key sequences
+KEYTIMEOUT=1

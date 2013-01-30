@@ -99,3 +99,6 @@ call pathogen#infect()
 let g:pymode_lint_ignore = "E501,E251,E231,E203,E201,E202,W601,E302,E303,W404,W901,E261,E702,E225,E401,E701,E221"
 
 set foldlevel=0
+
+" http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=0
