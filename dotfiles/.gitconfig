@@ -44,7 +44,7 @@
     editor = vim
 [user]
     name = James Pepin
-    email = jpepin@llnw.com
+    email = james.pepin@gmail.com
 [push]
     default = current
 [pull]

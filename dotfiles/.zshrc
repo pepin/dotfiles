@@ -35,8 +35,6 @@ plugins=(git vi-mode compleat)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-#export http_proxy="http://virt-mgr.vm.phx2.llnw.net:80"
-#export HTTP_PROXY="http://virt-mgr.vm.phx2.llnw.net:80"
 export EDITOR=vim
 
 if [ -f "$HOME/.zsh/common" ]; then
