@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: con
+# key: con
+# binding: direct-keybinding
+# --
+Context("${1:description}", func() {
+    $0
+})

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: James Pepin
+# name: bef
+# key: bef
+# --
+BeforeEach(func(){
+  $0
+})

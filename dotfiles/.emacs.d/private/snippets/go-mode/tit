@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+#name : tit
+#key : tit
+#contributor : James Pepin
+# --
+It("${1:description}", func(done Done) {
+         defer close(done)
+         $0
+}, ${2:0.5})

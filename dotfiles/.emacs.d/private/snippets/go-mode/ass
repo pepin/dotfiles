@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ass
+# key:  ass
+# binding: direct-keybinding
+# --
+AssertThatf(${1:err}, ${2:IsNil()}, "${3:Expecting nil, got %s}", ${4:err})

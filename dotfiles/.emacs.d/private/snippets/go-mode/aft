@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: James Pepin
+# name: aft
+# key: aft
+# --
+AfterEach(func(){
+  $0
+})
