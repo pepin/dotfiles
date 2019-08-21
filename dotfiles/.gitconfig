@@ -54,3 +54,6 @@
 
 [diff "nodiff"]
     command = /bin/true
+[receive]
+	denynonfastforwards = true
+	denydeletes = true
