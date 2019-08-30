@@ -31,6 +31,9 @@ set hidden
 " automatically save buffers on exit
 " set autowrite
 
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+
 syntax on
 syntax enable
 filetype on
@@ -93,7 +96,12 @@ set fileencodings=utf-8,latin1
 " set this for showing vim session info in shell prompt
 let $JP_SESSION_PROMPT_MARKER="<VIM SESSION> "
 
-call pathogen#infect()
+"call pathogen#infect()
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " pythonmode settings
 let g:pymode_lint_ignore = "E501,E251,E231,E203,E201,E202,W601,E302,E303,W404,W901,E261,E702,E225,E401,E701,E221"
@@ -101,4 +109,45 @@ let g:pymode_lint_ignore = "E501,E251,E231,E203,E201,E202,W601,E302,E303,W404,W9
 set foldlevel=0
 
 " http://www.johnhawthorn.com/2012/09/vi-escape-delays/
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=500 ttimeoutlen=0
+
+call plug#begin('~/.vim/plugged')
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-surround'
+    Plug 'scrooloose/nerdtree'
+    Plug 'liuchengxu/vim-which-key'
+call plug#end()
+
+let g:which_key_map = {}
+
+let g:which_key_map['f'] = {
+      \ 'name' : '+files' ,
+      \ 't' : ['NerdTreeToggle()'     , 'nerdtree-toggle'],
+      \ 's' : [':update'     , 'save-file'],
+      \}
+let g:which_key_map['w'] = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ }
+
+
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <localleader> :<c-u>WhichKey  ','<CR>
+
