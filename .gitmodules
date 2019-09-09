@@ -1,15 +1,3 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim-bundles/nerdtree"]
-	path = vim-bundles/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-[submodule "vim-bundles/camelcasemotion"]
-	path = vim-bundles/camelcasemotion
-	url = git://github.com/vim-scripts/camelcasemotion.git
-[submodule "vim-bundles/surround"]
-	path = vim-bundles/surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule "vim-bundles/python-mode"]
-	path = vim-bundles/python-mode
-	url = git://github.com/klen/python-mode.git
