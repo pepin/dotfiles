@@ -44,38 +44,45 @@ for file in $(find "$current_dir/dotfiles/" -maxdepth 1); do
     fi
 done
 
-function add_bundle(){
+function rm_bundle(){
     dest_path="$HOME/.vim/bundle/$1"
-    source_path="$current_dir/vim-bundles/$1"
-    if [ "$link_cmd" == "link_remote" ]; then
-            ssh $server mkdir -p "$HOME/.vim/bundle"
-            $link_cmd "$source_path/" "$dest_path"
-    else
-        mkdir -p ~/.vim/bundle
-        if [ -e "$dest_path" ]; then
-            echo "Bundle $1 already exists."
-        elif [ -d "$source_path" ]; then
-            echo "Creating link to $dest_path from $source_path"
-            $link_cmd "$source_path" "$dest_path"
-        else
-            echo "Could not add bundle '$1', was not found in '$current_dir/vim-bundles/'"
-        fi
-    fi
+    rm -f $dest_path
 }
 
-add_bundle "nerdtree"
-add_bundle "camelcasemotion"
-add_bundle "surround"
-add_bundle "python-mode"
+function go_install() {
+    export GOPATH=$HOME
+    go get -u $1
+    go install $1
+}
+
+
 if [ ! -e  "$HOME/.oh-my-zsh" ]; then
     $link_cmd "$current_dir/oh-my-zsh" "$HOME/.oh-my-zsh"
 fi
 if [ ! -e  "$HOME/.oh-my-zsh-custom" ]; then
     $link_cmd "$current_dir/oh-my-zsh-custom" "$HOME/.oh-my-zsh-custom"
 fi
+$link_cmd "$current_dir/dotfiles/.emacs.d/*" "$HOME/.emacs.d/"
+
 
 if [ "$link_cmd" == "link_remote" ]; then
     $link_cmd "$current_dir/oh-my-zsh/" "$HOME/.oh-my-zsh"
     $link_cmd "$current_dir/oh-my-zsh-custom/" "$HOME/.oh-my-zsh-custom"
     $link_cmd "$current_dir/colors/" "$HOME/.colors"
+fi
+
+if [ "$link_cmd" == "link_local" ]; then
+  go_install github.com/davidrjenni/reftools/cmd/fillstruct
+  go_install github.com/davidrjenni/reftools/cmd/fillswitch
+  go_install github.com/davidrjenni/reftools/cmd/fixplurals
+  go_install github.com/mdempsky/gocode
+  go_install github.com/rogpeppe/godef
+  go_install github.com/zmb3/gogetdoc
+  go_install golang.org/x/tools/cmd/goimports
+  go_install github.com/fatih/gomodifytags
+  go_install github.com/haya14busa/gopkgs/cmd/gopkgs
+  go_install golang.org/x/tools/cmd/gorename
+  go_install github.com/cweill/gotests/...
+  go_install golang.org/x/tools/cmd/guru
+  go_install github.com/josharian/impl
 fi
