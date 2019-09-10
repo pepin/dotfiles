@@ -62,8 +62,29 @@ fi
 if [ ! -e  "$HOME/.oh-my-zsh-custom" ]; then
     $link_cmd "$current_dir/oh-my-zsh-custom" "$HOME/.oh-my-zsh-custom"
 fi
+
+if [ -e "$HOME/.emacs.d" ]; then
+  mv $HOME/.emacs.d{,.old}
+fi
+
+$link_cmd "$current_dir/spacemacs" "$HOME/.emacs.d"
 $link_cmd "$current_dir/dotfiles/.emacs.d/*" "$HOME/.emacs.d/"
 
+function install_from_remote() {
+  fname = $(mktemp "remote_installer.XXXXX")
+  curl -O $fname "$2"
+  if [ $? -eq 0 ]; then 
+    sha=$(shasum -a 256 $fname | awk '{print $1}')
+    if [ "$sha" == "$1" ]; then
+      . $fname
+    fi
+  fi
+  if [ -f $fname ]; then
+    rm $fname
+  fi
+}
+
+install_from_remote 175001b095420d65c2bf0d9efe57372ab2d9082b66f8c6bfc220c1b9578f86a0 https://spacevim.org/install.sh
 
 if [ "$link_cmd" == "link_remote" ]; then
     $link_cmd "$current_dir/oh-my-zsh/" "$HOME/.oh-my-zsh"
