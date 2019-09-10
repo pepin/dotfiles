@@ -24,9 +24,9 @@
     sta        = stash
     f          = fetch origin
     checkfiles = diff --name-only
-    tracking = "!f() { echo $(git config --get branch.$1.remote):$(git config --get branch.$1.merge);  }; source ~/.bash/git-completion.bash; f $(__git_ps1 '%s')"
+    tracking = "!f() { echo $(git config --get branch.$1.remote):$(git config --get branch.$1.merge);  }; f $(git rev-parse --abbrev-ref --symbolic HEAD)"
     # git set-tracking remote[ default origin ] branch [ default current branch name ]
-    set-tracking = "!f(){ remote=$2; if [ $# -lt 2 ]; then track=$1; remote='origin'; elif [ $# -lt 3 ]; then track=$1; else track=$3; fi; git config branch.$1.remote $remote; git config branch.$1.merge refs/heads/$track; }; source ~/.bash/git-completion.bash; f $(__git_ps1 '%s') $1 $2"
+    set-tracking = "!f(){  git branch --set-upstream-to=origin/$1 $1; }; f $(git rev-parse --abbrev-ref --symbolic HEAD)"
 
     # git new-bug bugNo basebranch [ default master ]
     new-bug = "!~/.bash/new-bug-branch.sh $1 $2"

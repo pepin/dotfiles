@@ -83,3 +83,7 @@ if [ -f $HOME/.bash/common ]; then
 fi
 
 alias apt='aptitude'
+
+[[ -s "/home/jpepin/.gvm/scripts/gvm" ]] && source "/home/jpepin/.gvm/scripts/gvm"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

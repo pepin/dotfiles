@@ -1,11 +1,19 @@
-(setq-default dotspacemacs-configuration-layers '(shell markdown go org html extra-langs python tmux sql version-control c-c++ git github
+(setq-default dotspacemacs-configuration-layers '(yaml
+                                                  org
+                                                  (go :variables
+                                                      go-format-before-save 1
+                                                      gofmt-command "/home/jpepin/bin/goimports"
+                                                      go-tab-width 4
+                                                      godoc-at-point-function 'godoc-gogetdoc
+                                                      go-linter 'golangci-lint)
+                                                  shell markdown html python tmux sql version-control c-c++ git github
   (auto-completion :variables
                      auto-completion-return-key-behavior 'complete
-                     auto-completion-enable-snippets-in-popup t
+                     auto-completion-enable-snippets-in-popup f
                      auto-completion-tab-key-behavior 'cycle
                      auto-completion-complete-with-key-sequence nil)))
 
-(setq-default dotspacemacs-themes '(james ))
+(setq-default dotspacemacs-themes '(james :location local))
 (defvar nose-use-verbose nil) ; default is nil
 
 (defun dotspacemacs/config ()
@@ -15,8 +23,8 @@
   (golden-ratio-mode 1) ; enable golden ratio mode by default
   (yas-minor-mode 1) ; enable yasnippet
   (subword-mode) ; camelcase motion
-  (global-hl-line-mode -1)) ; Disable current line highlight
-; (global-linum-mode)) ; Show line numbers by default
+  (global-hl-line-mode -1) ; Disable current line highlight
+ (global-linum-mode)) ; Show line numbers by default
 
 (add-hook 'post-command-hook
           (lambda ()
@@ -64,8 +72,6 @@
     ("8df40eb4c85b221e3d40ad04559b68b441d9cf69801ef6d1e3d3d17d5773ccd3" "dc5f5383bdc86a03a075880d9313901bb7d44affba5157eaf1f2ebdf35a7b944" "efb148b9a120f417464713fe6cad47eb708dc45c7f2dbfeea4a7ec329214e63e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "b825687675ea2644d1c017f246077cdd725d4326a1c11d84871308573d019f67" "9823333060f12954e41174bfa4c271b94028ff8452b93f9459b362cc89ce39c2" "1bd06e70f0bc667c8912d93db80d408ae011a60469d2d142f0eaee90ddbeeaa0" default)))
  '(fci-rule-color "#073642" t)
  '(fringe-mode 6 nil (fringe))
- '(godef-command "/usr/bin/godef")
- '(gofmt-command "/usr/bin/goimports")
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
