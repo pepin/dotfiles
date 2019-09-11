@@ -119,14 +119,14 @@ for file in $(find "$current_dir/dotfiles/" -maxdepth 1); do
     fi
 done
 
-grep "jp_zshrc" $HOME/.zshrc >/dev/null 2>&1|| \ cat <<EOF >> $HOME/.zshrc
+grep "jp_zshrc" $HOME/.zshrc >/dev/null 2>&1|| /bin/cat <<EOF >> $HOME/.zshrc
 
 if [ -e $HOME/.zsh/jp_zshrc ]; then
     source $HOME/.zsh/jp_zshrc
 fi
 EOF
 
-grep "jp_bashrc" $HOME/.bashrc >/dev/null 2>&1 || \ cat <<EOF >> $HOME/.bashrc
+grep "jp_bashrc" $HOME/.bashrc >/dev/null 2>&1 || /bin/cat <<EOF >> $HOME/.bashrc
 
 if [ -e $HOME/.bash/jp_bashrc ]; then
     source $HOME/.bash/jp_bashrc
